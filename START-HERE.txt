@@ -1,9 +1,17 @@
-POSTAL HISTORY COLLECTION REGISTER — VERSION 1.0
+POSTAL HISTORY COLLECTION REGISTER — VERSION 1.2
 
 CONTENTS
-index.html, style.css, app.js and seed.js form the complete app.
-Keep all four files together, at the same folder level.
-No installation, build process, API key or external library is required.
+Keep index.html, style.css, app.js, scan-processing.js and seed.js together.
+Keep the vendor folder and both PDF.js files inside it.
+No build process or API key is required. PDF.js is bundled locally.
+
+GITHUB UPDATE
+Export a backup in the existing app first. Upload the contents of this package
+to the SAME repository and branch, replacing existing files. Include vendor/.
+Do not upload the ZIP itself as the website. Keep the existing Pages URL.
+After deployment, reload Safari. Existing records stay in this browser.
+In PH-0002 and PH-0003, choose Images > Process existing uploads.
+No re-uploading of those PDFs is needed.
 
 OPENING THE APP
 This package is ready to put in a separate website repository from your album editor.
@@ -22,6 +30,15 @@ Transcription and translation are left blank for subsequent work.
 EVERYDAY USE
 1. Add item, choose its type and enter a reference and description.
 2. Add JPEG/PNG/WebP scans or PDFs on the Images tab. Maximum 20 MB per file.
+   New uploads generate cropped and straightened JPGs for each PDF page or image.
+   Original files are preserved. Processing stays on the device.
+   Unclear paper edges retain the full image rather than crop into handwriting.
+   Automatic deskew supports up to 14 degrees; perspective correction is not included.
+   Images are rendered at up to 2600 pixels on their longest side.
+   Process existing uploads also retries failures without duplicating successful output.
+   Rotate left / Rotate right turns any image by 90 degrees and saves it.
+   Downloads and printed images use the chosen orientation. PDFs stay unchanged;
+   rotate their processed JPG images. Four turns restore the exact starting image.
 3. Label every attachment so recto, verso, folded and unfolded views are clear.
 4. Enter postal markings, routes, rate evidence and sources in Postal research.
 5. Enter transcription and translation in Letter & translation.
@@ -52,7 +69,6 @@ This is a catalogue summary, not a physical-size exhibition mounting page.
 PDF originals are listed, not printed inside the summary; download them separately.
 
 VERIFICATION
-JavaScript syntax and seed/backup structure checked. Backup serialisation, MIME
-validation and duplicate ID checks exercised. No live Safari or browser UI test
-was available in the build environment; please first test edits, export/import
-and reopening with the sample before cataloguing a large group.
+JavaScript syntax checked. Synthetic scans exercised at five skew angles.
+Blank/full-frame safety, original retention, retry failure handling and duplicate
+prevention tested. Actual Safari/PDF rendering has not been browser-tested here.
